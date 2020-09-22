@@ -55,10 +55,10 @@ hist(temp$stepsperday,
 
 Mean and median of the total number of steps taken per day :
 ```{r mean.median, message = FALSE}
-temp %>%
-      summarise(mean.stepsperday = mean(stepsperday, na.rm = TRUE),
-                median.stepsperday = median(stepsperday, na.rm = TRUE)) %>%
-      as.data.frame
+activitydf %>% group_by(date) %>%
+      summarise(mean.stepsperday = mean(steps),
+                median.stepsperday = median(steps)) %>%
+      as.data.frame %>% head
 ```
 
 

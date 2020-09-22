@@ -97,15 +97,20 @@ hist(temp$stepsperday,
 Mean and median of the total number of steps taken per day :
 
 ```r
-temp %>%
-      summarise(mean.stepsperday = mean(stepsperday, na.rm = TRUE),
-                median.stepsperday = median(stepsperday, na.rm = TRUE)) %>%
-      as.data.frame
+activitydf %>% group_by(date) %>%
+      summarise(mean.stepsperday = mean(steps),
+                median.stepsperday = median(steps)) %>%
+      as.data.frame %>% head
 ```
 
 ```
-##   mean.stepsperday median.stepsperday
-## 1          9354.23              10395
+##         date mean.stepsperday median.stepsperday
+## 1 2012-10-01               NA                 NA
+## 2 2012-10-02          0.43750                  0
+## 3 2012-10-03         39.41667                  0
+## 4 2012-10-04         42.06944                  0
+## 5 2012-10-05         46.15972                  0
+## 6 2012-10-06         53.54167                  0
 ```
 
 
